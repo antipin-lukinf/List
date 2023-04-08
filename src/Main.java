@@ -79,21 +79,20 @@ public class Main {
      * Найти значение по индексу
      */
     static int getByIndex(ListNode head, int index) {
-        //this.index = index;
-        //throw new UnsupportedOperationException();
         int count = 0;
+        int result = 0;
         while (true) {
+            if (count == index) {
+                return head.value;
+            }
             if (head.getNext() == null) {
                 count++;
-                if (index == count){
-                    System.out.println(head);
-                }
                 break;
             }
             count++;
             head = head.getNext();
         }
-        return count;
+        throw new ArrayIndexOutOfBoundsException("Вышли за границу List");
     }
 
     /**
