@@ -1,6 +1,8 @@
-package ru.gb.lesson3;
+
 
 public class Main {
+
+    private static int index;
 
     static class ListNode {
         int value;
@@ -14,6 +16,14 @@ public class Main {
             this.value = value;
             this.next = next;
         }
+
+        public ListNode getNext() {
+            return next;
+        }
+
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
 
     public static void main(String[] args) {
@@ -25,7 +35,10 @@ public class Main {
 
         ListNode node = new ListNode(1, new ListNode(2, new ListNode(2, new ListNode(4)))); // 1 -> 2 -> 2 -> 4
         System.out.println(size(node)); // 4
-        asString(node); // [1 -> 2 -> 2 -> 4]
+        //asString(node); // [1 -> 2 -> 2 -> 4]
+
+
+        //int index = 1;
 
         System.out.println(getByIndex(node, 0)); // 1
         System.out.println(getByIndex(node, 3)); // 4
@@ -35,15 +48,21 @@ public class Main {
     /**
      * Посчитать размер списка.
      */
-    int count = 0;
-    static int size(ListNode head, ListNode first, ListNode second, int count) {
-        throw new UnsupportedOperationException();
+
+    static int size(ListNode head) {
+        //throw new UnsupportedOperationException("На вход пришел пустой список");
         //ListNode head = null; // 1 -> 1 -> 2
         //ListNode iterator;
         //iterator = null;
 
-        while (second != null){
+        int count = 0;
+        while (true) {
+            if (head.getNext() == null) {
+                count++;
+                break;
+            }
             count++;
+            head = head.getNext();
         }
         return count;
     }
@@ -52,15 +71,29 @@ public class Main {
      * Написать строковое представление списка в формате
      * [first_value -> second_value -> ... -> last_value]
      */
-    static String asString(ListNode head) {
-        throw new UnsupportedOperationException();
-    }
+//    static String asString(ListNode head) {
+//        throw new UnsupportedOperationException();
+//    }
 
     /**
      * Найти значение по индексу
      */
     static int getByIndex(ListNode head, int index) {
-        throw new UnsupportedOperationException();
+        //this.index = index;
+        //throw new UnsupportedOperationException();
+        int count = 0;
+        while (true) {
+            if (head.getNext() == null) {
+                count++;
+                if (index == count){
+                    System.out.println(head);
+                }
+                break;
+            }
+            count++;
+            head = head.getNext();
+        }
+        return count;
     }
 
     /**
